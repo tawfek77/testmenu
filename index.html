@@ -113,6 +113,15 @@
             });
         }
 
+        // Listen for the Home key to close the menu
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Home") {
+                fetch(`https://${GetParentResourceName()}/closeMenu`, {
+                    method: 'POST'
+                });
+            }
+        });
+
         // Listen for messages from Lua to show/hide the menu
         window.addEventListener('message', function(event) {
             if (event.data.type === "toggle") {
